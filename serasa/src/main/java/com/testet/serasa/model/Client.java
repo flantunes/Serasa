@@ -1,11 +1,15 @@
 package com.testet.serasa.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity /* entidade que pode ser manipulada no banco de dados */
 @Table(name = "tb_client")
@@ -17,9 +21,10 @@ public class Client {
 
 	@NotNull
 	private String name;
-
+	
 	@NotNull
-	private String date;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dataNascimento;
 
 	@NotNull
 	private String telephone;
@@ -40,12 +45,12 @@ public class Client {
 		this.name = name;
 	}
 
-	public String getDate() {
-		return date;
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public String getTelephone() {
